@@ -1,3 +1,4 @@
+from __future__ import annotations
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 from sqlalchemy import String, Integer, ForeignKey
 from sqlalchemy import Enum as SqlEnum
@@ -8,6 +9,7 @@ from app.models.enums import JobPriority, JobStatus
 if TYPE_CHECKING:
     from app.models.equipment import Equipment
     from app.models.operator import Operator
+    from app.models.service_report import ServiceReport
 
 class FieldJob(Base):
     __tablename__ = "field_jobs"
@@ -19,6 +21,7 @@ class FieldJob(Base):
                                                             name="job_priority",
                                                             values_callable = lambda enum_cls: [member.value for member in enum_cls]
                                                         ))
+    
     status: Mapped[JobStatus] = mapped_column(SqlEnum(
                                                         JobStatus,
                                                         name="job_status",
@@ -29,3 +32,4 @@ class FieldJob(Base):
 
     equipment: Mapped["Equipment"] = relationship(back_populates="field_jobs")
     operator: Mapped["Operator"] = relationship(back_populates="field_jobs")
+    service_report: Mapped[list["ServiceReport"]] = relationship(back_populates="field_jobs")

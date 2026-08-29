@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from sqlalchemy import Integer, String, Numeric, ForeignKey
 from sqlalchemy import Enum as SqlEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -23,7 +25,7 @@ class Equipment(Base):
             values_callable = lambda enum_cls: [member.value for member in enum_cls]
         )
     )
-    fuel_level: Mapped[Decimal] = mapped_column[Numeric(5, 2)]
-    facility_id: Mapped[int] = mapped_column[Integer, ForeignKey("farms.id")]
+    fuel_level: Mapped[Decimal] = mapped_column(Numeric(5, 2))
+    facility_id: Mapped[int] = mapped_column(Integer, ForeignKey("farms.id"))
 
     farm: Mapped[Farm] = relationship(back_populates="equipments")
