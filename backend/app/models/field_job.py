@@ -30,6 +30,6 @@ class FieldJob(Base):
     equipment_id: Mapped[int] = mapped_column(Integer, ForeignKey("equipments.id"))
     operator_id: Mapped[int] = mapped_column(Integer, ForeignKey("operators.id"))
 
-    equipment: Mapped["Equipment"] = relationship(back_populates="field_jobs")
-    operator: Mapped["Operator"] = relationship(back_populates="field_jobs")
-    service_report: Mapped[list["ServiceReport"]] = relationship(back_populates="field_jobs")
+    equipments: Mapped["Equipment"] = relationship(back_populates="field_jobs")
+    operators: Mapped["Operator"] = relationship(back_populates="field_jobs")
+    service_reports: Mapped[list["ServiceReport"]] = relationship(back_populates="field_jobs")

@@ -11,6 +11,7 @@ from app.models.base import Base
 
 if TYPE_CHECKING:
     from app.models.farm import Farm
+    from app.models.field_job import FieldJob
 
 class Equipment(Base):
     __tablename__ = "equipments"
@@ -28,4 +29,5 @@ class Equipment(Base):
     fuel_level: Mapped[Decimal] = mapped_column(Numeric(5, 2))
     facility_id: Mapped[int] = mapped_column(Integer, ForeignKey("farms.id"))
 
-    farm: Mapped[Farm] = relationship(back_populates="equipments")
+    farms: Mapped[Farm] = relationship(back_populates="equipments")
+    field_jobs: Mapped[list[FieldJob]] = relationship(back_populates="equipments")

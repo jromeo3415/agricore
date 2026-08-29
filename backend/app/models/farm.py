@@ -17,5 +17,5 @@ class Farm(Base):
     capacity: Mapped[int] = mapped_column(Integer)
     supervisor_id: Mapped[int] = mapped_column(Integer)
 
-    equipments: Mapped[list["Equipment"]] = relationship(back_populates="farm")
-    operators: Mapped[list["Operator"]] = relationship(back_populates="farm")
+    equipments: Mapped[list["Equipment"]] = relationship(back_populates="farms")
+    operators: Mapped[list["Operator"]] = relationship(back_populates="farms")
