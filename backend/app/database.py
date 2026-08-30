@@ -6,6 +6,7 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_async_engine(DATABASE_URL, echo=True)
+# use echo=True arg if you want to see SQL but its annoying
+engine = create_async_engine(DATABASE_URL)
 
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)

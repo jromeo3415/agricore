@@ -15,3 +15,9 @@ class FieldJobRead(FieldJobBase):
 
 class FieldJobCreate(FieldJobBase):
     pass
+
+class FieldJobDiscrepancy(BaseModel):
+    id: int
+    title: str = Field(min_length=1, max_length=100)
+    equipment_farm_id: int
+    operator_farm_id: int

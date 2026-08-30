@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.routers import field_jobs
+from app.routers import field_jobs, equipments
 
 app = FastAPI(
     title="Agricore Farm Operations Command Center",
@@ -9,6 +9,7 @@ app = FastAPI(
 )
 
 app.include_router(field_jobs.router)
+app.include_router(equipments.router)
 
 # sample health endpoint to verify application is running correctly
 @app.get("/health", tags=["health"])
