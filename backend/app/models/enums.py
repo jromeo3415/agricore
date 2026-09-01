@@ -16,3 +16,8 @@ class JobStatus(str, Enum):
     IN_PROGRESS = "In-Progress"
     COMPLETED = "Completed"
     FAILED = "Failed"
+
+class UserRole(str, Enum):
+    OPERATIONS_ADMIN = "Farm Operations Admin"
+    FIELD_HAND = "Field Hand"
+    AUDITOR = "Auditor"

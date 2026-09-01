@@ -4,9 +4,11 @@ from app.models.equipment import Equipment
 from app.models.field_job import FieldJob
 from app.models.service_report import ServiceReport
 from app.models.operator import Operator
+from app.models.supervisor import Supervisor
+from app.models.user import User
 from app.models.base import Base
 
 __all__ = [
     "JobStatus", "EquipmentStatus", "JobPriority", "Farm", "Equipment",
-    "FieldJob", "ServiceReport", "Base", "Operator"
+    "FieldJob", "ServiceReport", "Base", "Operator", "Supervisor", "User"
 ]

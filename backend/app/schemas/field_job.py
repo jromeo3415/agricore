@@ -21,3 +21,9 @@ class FieldJobDiscrepancy(BaseModel):
     title: str = Field(min_length=1, max_length=100)
     equipment_farm_id: int
     operator_farm_id: int
+
+class ReliabilityMetrics(BaseModel):
+    equipment_model: str = Field(min_length=1, max_length=100)
+    completed: int
+    failed: int
+    completed_to_failed: float

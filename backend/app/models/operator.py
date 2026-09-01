@@ -8,6 +8,7 @@ from app.models.base import Base
 if TYPE_CHECKING:
     from app.models.field_job import FieldJob
     from app.models.farm import Farm
+    from app.models.supervisor import Supervisor
 
 class Operator(Base):
     __tablename__ = "operators"
@@ -15,6 +16,8 @@ class Operator(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
     farm_id: Mapped[int] = mapped_column(Integer, ForeignKey("farms.id"))
+    supervisor_id: Mapped[int] = mapped_column(Integer, ForeignKey("supervisors.id"))
 
     field_jobs: Mapped[list["FieldJob"]] = relationship(back_populates="operators")
     farms: Mapped["Farm"] = relationship(back_populates="operators")
+    supervisors: Mapped["Supervisor"] = relationship(back_populates="operators")

@@ -7,23 +7,32 @@ from app.models.farm import Farm
 from app.models.field_job import FieldJob
 from app.models.operator import Operator
 from app.models.service_report import ServiceReport
-
+from app.models.supervisor import Supervisor
 
 async def seed() -> None:
     async with AsyncSessionLocal() as db:
+
+        supervisor1 = Supervisor(
+            name="Supervisor Gunther",
+        )
+        
+        supervisor2 = Supervisor(
+            name="Supervisor Richard",
+        )
+
+        db.add_all([supervisor1, supervisor2])
+        await db.flush()
 
         farm1 = Farm(
             name="Sarasota Orange Field",
             location_region="SE, United States",
             capacity=10,
-            supervisor_id=101,
         )
 
         farm2 = Farm(
             name="Florence Vineyard",
             location_region="S, Europe",
             capacity=5,
-            supervisor_id=102,
         )
 
         db.add_all([farm1, farm2])
@@ -32,16 +41,19 @@ async def seed() -> None:
         op1 = Operator(
             name="John Johnson",
             farm_id=farm1.id,
+            supervisor_id=supervisor1.id
         )
 
         op2 = Operator(
             name="James Jameson",
             farm_id=farm2.id,
+            supervisor_id=supervisor2.id
         )
 
         op3 = Operator(
             name="Bob Smith",
-            farm_id=farm1.id,
+            farm_id=farm2.id,
+            supervisor_id=supervisor2.id
         )
 
         db.add_all([op1, op2, op3])
