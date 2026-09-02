@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.dependencies import get_db
-from app.schemas.supervisor import SupervisorRead
+from app.schemas.supervisor import SupervisorRead, SupervisorActiveOperators
 from app.models.supervisor import Supervisor
 
 router = APIRouter(prefix="/supervisors", tags=["supervisors"])
@@ -19,4 +19,6 @@ async def list_supervisors(db: AsyncSession = Depends(get_db)) -> list[Superviso
     result = await db.execute(select(Supervisor))
     return result.scalars().all()
 
-@router.get("/{id}/active_operators", response_model=)
+@router.get("/{id}/active_operators", response_model=list[SupervisorActiveOperators])
+async def count_active_operators_for_supervisor(db: AsyncSession = Depends(get_db)) -> list[SupervisorActiveOperators]:
+    pass

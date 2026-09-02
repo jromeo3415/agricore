@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
 
-from app.routers import field_jobs, equipments, farms, operators, auth
+from app.routers import field_jobs, equipments, farms, operators, auth, supervisors
 
 load_dotenv()
 
@@ -18,7 +18,7 @@ app.add_middleware(
     CORSMiddleware, 
 
     # Endpoint for our frontend
-    allow_origins=[os.getenv("FRONTEND_ORIGIN")],
+    allow_origins=["*"],
 
     # this allows us to pass an authorization header using JWT
     allow_credentials=True,
@@ -33,6 +33,7 @@ app.include_router(field_jobs.router)
 app.include_router(equipments.router)
 app.include_router(farms.router)
 app.include_router(operators.router)
+app.include_router(supervisors.router)
 
 # sample health endpoint to verify application is running correctly
 @app.get("/health", tags=["health"])
