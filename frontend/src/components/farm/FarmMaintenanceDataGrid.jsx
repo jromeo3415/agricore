@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import apiClient from "../../api/client";
 
 const columns = [
-    {field: 'id', headerName: 'Farm ID', width: 100},
-    {field: 'name', headerName: 'Name', width: 120},
-    {field: 'count', headerName: '# of Equipment', width: 100},
-    {field: 'maintenance_count', headerName: '# w/ Maintenance Status', width: 120},
-    {field: 'maintenance_percent', headerName: '% Maintenance Equipment', width: 120},
+    {field: 'id', headerName: 'Farm ID', width: 80},
+    {field: 'name', headerName: 'Name', width: 150},
+    {field: 'count', headerName: '# of Equipment', width: 120},
+    {field: 'maintenance_count', headerName: '# Maintenance', width: 120},
+    {field: 'maintenance_percent', headerName: '% Maintenance', width: 120},
 ]
 
 function FarmMaintenanceDataGrid() {
@@ -39,7 +39,7 @@ function FarmMaintenanceDataGrid() {
         <Box>
             {loading && <CircularProgress/>}
             {error && <Alert severity="error">{error}</Alert>}
-            {!loading && !error && <DataGrid rows={farms} columns={columns} getRowId={(row) => row.id} /> }
+            {!loading && !error && <DataGrid rows={farms} columns={columns} getRowId={(row) => row.id} sx={{height: 400}}/> }
         </Box>
     );
 }

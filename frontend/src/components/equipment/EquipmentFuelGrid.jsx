@@ -26,7 +26,7 @@ function EquipmentFueldGrid() {
                 if (isMounted) setEquipment(response.data);
                 setError(null);
             } catch {
-                if (isMounted) setError('Error fetching missions from database');
+                if (isMounted) setError('Unable to retrieve reliability metrics');
             } finally {
                 if (isMounted) {setLoading(false);
             }

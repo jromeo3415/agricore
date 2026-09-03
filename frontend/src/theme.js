@@ -10,8 +10,9 @@ const theme = createTheme({
             main: '#ff7308'
         },
         background: {
-            default: '#193714'
-        }
+            default: '#F7F9F6',
+            paper: '#FFFFFF',
+        },
     },
     shape: {
         borderRadius: 8, 
