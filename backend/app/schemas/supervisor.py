@@ -7,6 +7,5 @@ class SupervisorRead(SupervisorBase):
     id: int
     model_config = ConfigDict(from_attributes=True)
 
-class SupervisorActiveOperators(SupervisorBase):
-    farmhands: int
+class SupervisorActiveOperators(SupervisorRead):
     farmhands_active_jobs: int
